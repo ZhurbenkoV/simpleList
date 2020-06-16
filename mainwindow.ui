@@ -26,7 +26,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>16</x>
@@ -41,7 +41,7 @@
        <property name="title">
         <string>View List</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -93,38 +93,17 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_type">
+            <widget class="QComboBox" name="sort_type">
              <property name="editable">
               <bool>false</bool>
              </property>
              <property name="frame">
               <bool>true</bool>
              </property>
-             <item>
-              <property name="text">
-               <string>id</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>value</string>
-              </property>
-             </item>
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_order">
-             <item>
-              <property name="text">
-               <string>по возрастанию</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>по убыванию</string>
-              </property>
-             </item>
-            </widget>
+            <widget class="QComboBox" name="sort_order"/>
            </item>
           </layout>
          </item>

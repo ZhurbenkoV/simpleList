@@ -14,6 +14,7 @@ DataBaseItem::DataBaseItem(QString value, int id)
     this->id=id;
 }
 
+
 void DataBaseItem::changeStatus()
 {
     status=!status;
