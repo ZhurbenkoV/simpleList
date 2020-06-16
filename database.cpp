@@ -1,19 +1,19 @@
 #include "database.h"
 
 DataBase::DataBase(){
+    this->id=0;
 
 }
 
 QList<DataBaseItem> DataBase::dataBaseElemets(){
-
+    return elemets;
 }
 
-int DataBase::globalID(){
-    return id++;
-}
 
-void DataBase::addNewItem(int id, QString value){
-
+void DataBase::addNewItem(QString value){
+    DataBaseItem newItem(value,id);
+    elemets.append(newItem);
+    id++;
 }
 
 DataBase::~DataBase(){
