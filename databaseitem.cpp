@@ -1,31 +1,26 @@
 #include "databaseitem.h"
 
-DataBaseItem::DataBaseItem()
-{
+DataBaseItem::DataBaseItem(){
     this->status=0;
     this->value=nullptr;
     this->id=-1;
 }
 
-DataBaseItem::DataBaseItem(QString value, int id)
-{
+DataBaseItem::DataBaseItem(QString value, int id){
     this->status=1;
     this->value=value;
     this->id=id;
 }
 
 
-void DataBaseItem::changeStatus()
-{
+void DataBaseItem::changeStatus(){
     status=!status;
 }
 
-QString DataBaseItem::itemValue()
-{
+QString DataBaseItem::itemValue(){
     return value;
 }
 
-int DataBaseItem::ItemId()
-{
+int DataBaseItem::ItemId(){
     return id;
 }
