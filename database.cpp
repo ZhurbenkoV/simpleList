@@ -4,7 +4,7 @@ DataBase::DataBase(){
 
 }
 
-QList<DataBaseItem> DataBase::DataBaseElemets(){
+QList<DataBaseItem> DataBase::dataBaseElemets(){
 
 }
 

@@ -12,7 +12,7 @@ private:
 
 public:
     DataBase();
-    QList<DataBaseItem> DataBaseElemets();
+    QList<DataBaseItem> dataBaseElemets();
     int globalID();
     void addNewItem(int id,QString value);
     ~DataBase();
