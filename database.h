@@ -12,8 +12,9 @@ private:
 
 public:
     DataBase();
-    QList<DataBaseItem> &dataBaseElemets();
+    QList<DataBaseItem> &dataBaseElemetsList();
     void addNewItem(QString value);
+    void deleteItem(int id);
     ~DataBase();
 };
 
