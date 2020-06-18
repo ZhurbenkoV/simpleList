@@ -1,4 +1,4 @@
-#ifndef DATABASEITEM_H
+﻿#ifndef DATABASEITEM_H
 #define DATABASEITEM_H
 #include <QString>
 
@@ -15,6 +15,7 @@ public:
     void changeStatus();
     QString itemValue();
     int ItemId();
+    void changeValue(QString newValue);
 };
 
 #endif // DATABASEITEM_H

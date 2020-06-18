@@ -24,3 +24,8 @@ QString DataBaseItem::itemValue(){
 int DataBaseItem::ItemId(){
     return id;
 }
+
+void DataBaseItem::changeValue(QString newValue)
+{
+    this->value=newValue;
+}
