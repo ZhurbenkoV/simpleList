@@ -2,12 +2,13 @@
 #define DATABASEITEM_H
 #include <QString>
 
-class DataBaseItem
-{
+class DataBaseItem{
+
 private:
 QString value;
 int id;
 bool status;
+
 public:
     DataBaseItem();
     DataBaseItem(QString value,int id);
