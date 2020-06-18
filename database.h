@@ -13,6 +13,7 @@ private:
 public:
     DataBase();
     QList<DataBaseItem> &dataBaseElemetsList();
+    QList<DataBaseItem> dataBaseElemetsSortedList(SortingType config);
     void addNewItem(QString value);
     void deleteItem(int id);
     ~DataBase();
