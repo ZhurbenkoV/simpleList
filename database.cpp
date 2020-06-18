@@ -5,7 +5,7 @@ DataBase::DataBase(){
 
 }
 
-QList<DataBaseItem> DataBase::dataBaseElemets(){
+QList<DataBaseItem> &DataBase::dataBaseElemets(){
     return elemets;
 }
 
