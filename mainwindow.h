@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <database.h>
+#include <databaseitem.h>
+#include <sortingtype.h>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
