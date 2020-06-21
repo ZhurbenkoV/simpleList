@@ -19,12 +19,14 @@ SOURCES += \
     database.cpp \
     databaseitem.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    sortingtype.cpp
 
 HEADERS += \
     database.h \
     databaseitem.h \
-    mainwindow.h
+    mainwindow.h \
+    sortingtype.h
 
 FORMS += \
     mainwindow.ui
