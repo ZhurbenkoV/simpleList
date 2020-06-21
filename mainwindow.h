@@ -26,6 +26,8 @@ public:
 private slots:
     void render();
 
+    void on_addButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 QList<DataBaseItem> elementsListForRednder;

@@ -17,8 +17,7 @@ connect(ui->sort_type,&QComboBox::currentTextChanged,this,&MainWindow::render);
 connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
 }
 
-void MainWindow::render()
-{
+void MainWindow::render(){
     elementsListForRednder.clear();
     ui->sorted_item_list->clear();
     ui->DataBase_list->clear();
@@ -37,15 +36,21 @@ void MainWindow::render()
 
     foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
         QListWidgetItem *newDataBaseItem=new QListWidgetItem;
-        newDataBaseItem->setText(str.itemValue());
+        newDataBaseItem->setText(QString::number(str.ItemId())+"\t"+str.itemValue());
         newDataBaseItem->setData(Qt::UserRole,str.ItemId());
         ui->DataBase_list->addItem(newDataBaseItem);
     }
 }
 
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
+
+void MainWindow::on_addButton_clicked(){
+    if(ui->lineEdit->text()!=nullptr){
+    dataBase.addNewItem(ui->lineEdit->text());
+    }
+    ui->lineEdit->clear();
+}
