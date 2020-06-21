@@ -38,7 +38,7 @@ QList<DataBaseItem> DataBase::dataBaseElemetsSortedList(SortingType &config){
     }
     if(config.sortingOrder()==1){
         for(int i=0;i<sortedElements.size()/2;i++){
-            sortedElements.swap(i,sortedElements.size()-(1+i));
+            sortedElements.swapItemsAt(i,sortedElements.size()-(1+i));
         }
     }
     return sortedElements;
