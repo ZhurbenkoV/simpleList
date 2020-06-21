@@ -2,6 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "database.h"
+#include "databaseitem.h"
+#include "sortingtype.h"
+#include <QListWidgetItem>
+#include <QString>
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,9 +20,21 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
+
+private slots:
+    void render();
+
+    void on_addButton_clicked();
+
+    void on_changeValueButton_clicked();
+
+    void on_deleteButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QList<DataBaseItem> elementsListForRednder;
+    DataBase dataBase;
 };
 #endif // MAINWINDOW_H

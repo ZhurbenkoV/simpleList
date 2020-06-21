@@ -26,7 +26,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>16</x>
@@ -41,7 +41,7 @@
        <property name="title">
         <string>View List</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -75,9 +75,16 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="deleteButton_2">
+            <widget class="QPushButton" name="deleteButton">
              <property name="text">
               <string>Удалить</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="changeValueButton">
+             <property name="text">
+              <string>Изменить значение</string>
              </property>
             </widget>
            </item>
@@ -93,43 +100,22 @@
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_type">
+            <widget class="QComboBox" name="sort_type">
              <property name="editable">
               <bool>false</bool>
              </property>
              <property name="frame">
               <bool>true</bool>
              </property>
-             <item>
-              <property name="text">
-               <string>id</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>value</string>
-              </property>
-             </item>
             </widget>
            </item>
            <item>
-            <widget class="QComboBox" name="comboBox_order">
-             <item>
-              <property name="text">
-               <string>по возрастанию</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>по убыванию</string>
-              </property>
-             </item>
-            </widget>
+            <widget class="QComboBox" name="sort_order"/>
            </item>
           </layout>
          </item>
          <item>
-          <widget class="QListWidget" name="listWidget_view"/>
+          <widget class="QListWidget" name="sorted_item_list"/>
          </item>
         </layout>
        </widget>
@@ -140,7 +126,7 @@
        <property name="title">
         <string>DataBase</string>
        </property>
-       <widget class="QListWidget" name="listWidget">
+       <widget class="QListWidget" name="DataBase_list">
         <property name="geometry">
          <rect>
           <x>10</x>
