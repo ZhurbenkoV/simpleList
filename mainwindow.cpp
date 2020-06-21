@@ -6,15 +6,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-ui->sort_type->addItem("id",0);
-ui->sort_type->addItem("value",1);
-ui->sort_order->addItem("по возрастанию",0);
-ui->sort_order->addItem("по убыванию",1);
-connect(ui->addButton,&QPushButton::clicked,this,&MainWindow::render);
-connect(ui->deleteButton,&QPushButton::clicked,this,&MainWindow::render);
-connect(ui->changeValueButton,&QPushButton::clicked,this,&MainWindow::render);
-connect(ui->sort_type,&QComboBox::currentTextChanged,this,&MainWindow::render);
-connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
+    ui->sort_type->addItem("id",0);
+    ui->sort_type->addItem("value",1);
+    ui->sort_order->addItem("по возрастанию",0);
+    ui->sort_order->addItem("по убыванию",1);
+    connect(ui->addButton,&QPushButton::clicked,this,&MainWindow::render);
+    connect(ui->deleteButton,&QPushButton::clicked,this,&MainWindow::render);
+    connect(ui->changeValueButton,&QPushButton::clicked,this,&MainWindow::render);
+    connect(ui->sort_type,&QComboBox::currentTextChanged,this,&MainWindow::render);
+    connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
 }
 
 void MainWindow::render(){
@@ -28,10 +28,10 @@ void MainWindow::render(){
 
 
     foreach(DataBaseItem str,this->elementsListForRednder){
-       QListWidgetItem *newRenderItem=new QListWidgetItem;
-       newRenderItem->setText(str.itemValue());
-       newRenderItem->setData(Qt::UserRole,str.ItemId());
-       ui->sorted_item_list->addItem(newRenderItem);
+        QListWidgetItem *newRenderItem=new QListWidgetItem;
+        newRenderItem->setText(str.itemValue());
+        newRenderItem->setData(Qt::UserRole,str.ItemId());
+        ui->sorted_item_list->addItem(newRenderItem);
     }
 
     foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
@@ -50,7 +50,16 @@ MainWindow::~MainWindow(){
 
 void MainWindow::on_addButton_clicked(){
     if(ui->lineEdit->text()!=nullptr){
-    dataBase.addNewItem(ui->lineEdit->text());
+        dataBase.addNewItem(ui->lineEdit->text());
     }
     ui->lineEdit->clear();
+}
+
+void MainWindow::on_changeValueButton_clicked(){
+
+    if(ui->sorted_item_list->currentItem()!=nullptr && ui->lineEdit->text()!=nullptr){
+dataBase.dataBaseElemetsList()[ui->sorted_item_list->currentItem()->data(Qt::UserRole).toInt()].changeValue(ui->lineEdit->text());
+    }
+    ui->lineEdit->clear();
+
 }
