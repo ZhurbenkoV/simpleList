@@ -3,6 +3,7 @@
 #include <QList>
 #include "databaseitem.h"
 #include <QString>
+#include <sortingtype.h>
 
 
 class DataBase{
@@ -15,7 +16,7 @@ private:
 public:
     DataBase();
     QList<DataBaseItem> &dataBaseElemetsList();
-    QList<DataBaseItem> dataBaseElemetsSortedList(SortingType config);
+    QList<DataBaseItem> dataBaseElemetsSortedList(SortingType &config);
     void addNewItem(QString value);
     void deleteItem(int id);
     ~DataBase();

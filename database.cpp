@@ -24,7 +24,7 @@ QList<DataBaseItem> &DataBase::dataBaseElemetsList(){
 
 QList<DataBaseItem> DataBase::dataBaseElemetsSortedList(SortingType &config){
     QList<DataBaseItem> sortedElements=this->elemets;
-    switch (config.type()) {
+    switch (config.sortingType()) {
     case 0:
         foreach(DataBaseItem str,sortedElements){
             std::sort(sortedElements.begin(),sortedElements.end(),sortByid);
@@ -36,7 +36,7 @@ QList<DataBaseItem> DataBase::dataBaseElemetsSortedList(SortingType &config){
     default:
         break;
     }
-    if(config.order==0){
+    if(config.sortingOrder()==0){
         for(int i=0;i<sortedElements.size();i++){
             sortedElements.swap(i,sortedElements.size()-(1+i));
         }
