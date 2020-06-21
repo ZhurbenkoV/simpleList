@@ -5,9 +5,9 @@
 class DataBaseItem{
 
 private:
-QString value;
-int id;
-bool status;
+    QString value;
+    int id;
+    bool status;
 
 public:
     DataBaseItem();
