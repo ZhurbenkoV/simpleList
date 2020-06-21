@@ -5,6 +5,8 @@
 #include "database.h"
 #include "databaseitem.h"
 #include "sortingtype.h"
+#include <QListWidgetItem>
+#include <QString>
 
 
 
@@ -26,6 +28,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
+QList<DataBaseItem> elementsListForRednder;
+DataBase dataBase;
 };
 #endif // MAINWINDOW_H
