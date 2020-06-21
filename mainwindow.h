@@ -2,6 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "database.h"
+#include "databaseitem.h"
+#include "sortingtype.h"
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,10 +18,14 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    void render();
+
     ~MainWindow();
+
+private slots:
+    void render();
 
 private:
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H
