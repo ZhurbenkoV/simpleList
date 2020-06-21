@@ -19,8 +19,28 @@ connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
 
 void MainWindow::render()
 {
+    elementsListForRednder.clear();
     ui->sorted_item_list->clear();
     ui->DataBase_list->clear();
+    SortingType config(ui->sort_type->currentIndex(),ui->sort_order->currentIndex());
+    elementsListForRednder=dataBase.dataBaseElemetsSortedList(config);
+
+
+
+
+    foreach(DataBaseItem str,this->elementsListForRednder){
+       QListWidgetItem *newRenderItem=new QListWidgetItem;
+       newRenderItem->setText(str.itemValue());
+       newRenderItem->setData(Qt::UserRole,str.ItemId());
+       ui->sorted_item_list->addItem(newRenderItem);
+    }
+
+    foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
+        QListWidgetItem *newDataBaseItem=new QListWidgetItem;
+        newDataBaseItem->setText(str.itemValue());
+        newDataBaseItem->setData(Qt::UserRole,str.ItemId());
+        ui->DataBase_list->addItem(newDataBaseItem);
+    }
 }
 
 
