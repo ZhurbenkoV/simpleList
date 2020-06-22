@@ -126,7 +126,7 @@
        <property name="title">
         <string>DataBase</string>
        </property>
-       <widget class="QListWidget" name="DataBase_list">
+       <widget class="QWidget" name="">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -135,6 +135,18 @@
           <height>521</height>
          </rect>
         </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QListWidget" name="DataBase_list"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="changeStatusButton">
+           <property name="text">
+            <string>Поменять статус</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
      </item>
