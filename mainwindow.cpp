@@ -15,29 +15,34 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->changeValueButton,&QPushButton::clicked,this,&MainWindow::render);
     connect(ui->sort_type,&QComboBox::currentTextChanged,this,&MainWindow::render);
     connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
+    connect(ui->changeStatusButton,&QPushButton::clicked,this,&MainWindow::render);
+    ui->DataBase_list->addItem("id\tvalue\tstatus");
 }
 
 void MainWindow::render(){
+    currentItem=ui->sorted_item_list->currentRow();
     elementsListForRednder.clear();
     ui->sorted_item_list->clear();
     ui->DataBase_list->clear();
     SortingType config(ui->sort_type->currentIndex(),ui->sort_order->currentIndex());
     elementsListForRednder=dataBase.dataBaseElemetsSortedList(config);
-
+    ui->DataBase_list->addItem("id\tvalue\tstatus");
     foreach(DataBaseItem str,this->elementsListForRednder){
-        QListWidgetItem *newRenderItem=new QListWidgetItem;
-        newRenderItem->setText(str.itemValue());
-        newRenderItem->setData(Qt::UserRole,str.ItemId());
-        ui->sorted_item_list->addItem(newRenderItem);
+        if(str.itemStatus()){
+            QListWidgetItem *newRenderItem=new QListWidgetItem;
+            newRenderItem->setText(str.itemValue());
+            newRenderItem->setData(Qt::UserRole,str.ItemId());
+            ui->sorted_item_list->addItem(newRenderItem);
+        }
     }
 
     foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
         QListWidgetItem *newDataBaseItem=new QListWidgetItem;
-        newDataBaseItem->setText(QString::number(str.ItemId())+"\t"+str.itemValue());
+        newDataBaseItem->setText(QString::number(str.ItemId())+"\t"+str.itemValue()+"\t"+QString::number(str.itemStatus()));
         newDataBaseItem->setData(Qt::UserRole,str.ItemId());
         ui->DataBase_list->addItem(newDataBaseItem);
     }
-
+    ui->sorted_item_list->setCurrentRow(currentItem);
 }
 
 
@@ -54,18 +59,17 @@ void MainWindow::on_addButton_clicked(){
 }
 
 void MainWindow::on_changeValueButton_clicked(){
-int index=0;
-QListWidgetItem *currentItem = ui->sorted_item_list->currentItem();
+    int index=0;
+    QListWidgetItem *currentItem = ui->sorted_item_list->currentItem();
     if(ui->sorted_item_list->currentItem()!=nullptr && ui->lineEdit->text()!=nullptr){
-       // dataBase.dataBaseElemetsList()[ui->sorted_item_list->currentItem()->data(Qt::UserRole).toInt()].changeValue(ui->lineEdit->text());
         foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
             if(str.ItemId()==currentItem->data(Qt::UserRole).toInt()){
                 break;
             }
             index++;
         }
+        dataBase.dataBaseElemetsList()[index].changeValue(ui->lineEdit->text());
     }
-    dataBase.dataBaseElemetsList()[index].changeValue(ui->lineEdit->text());
     delete currentItem;
     ui->lineEdit->clear();
 
@@ -81,9 +85,24 @@ void MainWindow::on_deleteButton_clicked(){
             }
             currentIndex++;
         }
-        dataBase.dataBaseElemetsList().takeAt(currentIndex);
+        dataBase.deleteItem(currentIndex);
     }
+    delete currentItem;
+}
 
+void MainWindow::on_changeStatusButton_clicked()
+{
+    int index=0;
+    QListWidgetItem *currentItem = ui->DataBase_list->currentItem();
+    if(ui->DataBase_list->currentItem()!=nullptr && ui->DataBase_list->currentRow()!=0){
+        foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
+            if(str.ItemId()==currentItem->data(Qt::UserRole).toInt()){
+                break;
+            }
+            index++;
+        }
+        dataBase.dataBaseElemetsList()[index].changeStatus();
+    }
 
     delete currentItem;
 }

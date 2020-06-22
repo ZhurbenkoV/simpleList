@@ -29,3 +29,7 @@ void DataBaseItem::changeValue(QString newValue)
 {
     this->value=newValue;
 }
+
+bool DataBaseItem::itemStatus(){
+    return status;
+}

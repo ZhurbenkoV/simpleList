@@ -51,9 +51,8 @@ void DataBase::addNewItem(QString value){
     id++;
 }
 
-void DataBase::deleteItem(int id)
-{
-    elemets.takeAt(id);
+void DataBase::deleteItem(int id){
+    elemets.removeAt(id);
 }
 
 DataBase::~DataBase(){
