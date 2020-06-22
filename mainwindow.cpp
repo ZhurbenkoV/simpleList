@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->sort_type,&QComboBox::currentTextChanged,this,&MainWindow::render);
     connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
     connect(ui->changeStatusButton,&QPushButton::clicked,this,&MainWindow::render);
+    ui->DataBase_list->addItem("id\tvalue\tstatus");
 }
 
 void MainWindow::render(){
@@ -25,7 +26,7 @@ void MainWindow::render(){
     ui->DataBase_list->clear();
     SortingType config(ui->sort_type->currentIndex(),ui->sort_order->currentIndex());
     elementsListForRednder=dataBase.dataBaseElemetsSortedList(config);
-
+    ui->DataBase_list->addItem("id\tvalue\tstatus");
     foreach(DataBaseItem str,this->elementsListForRednder){
         if(str.itemStatus()){
             QListWidgetItem *newRenderItem=new QListWidgetItem;
@@ -93,14 +94,15 @@ void MainWindow::on_changeStatusButton_clicked()
 {
     int index=0;
     QListWidgetItem *currentItem = ui->DataBase_list->currentItem();
-    if(ui->DataBase_list->currentItem()!=nullptr){
+    if(ui->DataBase_list->currentItem()!=nullptr && ui->DataBase_list->currentRow()!=0){
         foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
             if(str.ItemId()==currentItem->data(Qt::UserRole).toInt()){
                 break;
             }
             index++;
         }
+        dataBase.dataBaseElemetsList()[index].changeStatus();
     }
-    dataBase.dataBaseElemetsList()[index].changeStatus();
+
     delete currentItem;
 }
