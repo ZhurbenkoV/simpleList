@@ -33,6 +33,8 @@ private slots:
 
     void on_deleteButton_clicked();
 
+    void on_changeStatusButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QList<DataBaseItem> elementsListForRednder;

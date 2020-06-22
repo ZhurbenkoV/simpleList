@@ -27,15 +27,17 @@ void MainWindow::render(){
     elementsListForRednder=dataBase.dataBaseElemetsSortedList(config);
 
     foreach(DataBaseItem str,this->elementsListForRednder){
-        QListWidgetItem *newRenderItem=new QListWidgetItem;
-        newRenderItem->setText(str.itemValue());
-        newRenderItem->setData(Qt::UserRole,str.ItemId());
-        ui->sorted_item_list->addItem(newRenderItem);
+        if(str.itemStatus()){
+            QListWidgetItem *newRenderItem=new QListWidgetItem;
+            newRenderItem->setText(str.itemValue());
+            newRenderItem->setData(Qt::UserRole,str.ItemId());
+            ui->sorted_item_list->addItem(newRenderItem);
+        }
     }
 
     foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
         QListWidgetItem *newDataBaseItem=new QListWidgetItem;
-        newDataBaseItem->setText(QString::number(str.ItemId())+"\t"+str.itemValue());
+        newDataBaseItem->setText(QString::number(str.ItemId())+"\t"+str.itemValue()+"\t"+QString::number(str.itemStatus()));
         newDataBaseItem->setData(Qt::UserRole,str.ItemId());
         ui->DataBase_list->addItem(newDataBaseItem);
     }
@@ -65,8 +67,8 @@ void MainWindow::on_changeValueButton_clicked(){
             }
             index++;
         }
+        dataBase.dataBaseElemetsList()[index].changeValue(ui->lineEdit->text());
     }
-    dataBase.dataBaseElemetsList()[index].changeValue(ui->lineEdit->text());
     delete currentItem;
     ui->lineEdit->clear();
 
@@ -84,5 +86,21 @@ void MainWindow::on_deleteButton_clicked(){
         }
         dataBase.deleteItem(currentIndex);
     }
+    delete currentItem;
+}
+
+void MainWindow::on_changeStatusButton_clicked()
+{
+    int index=0;
+    QListWidgetItem *currentItem = ui->DataBase_list->currentItem();
+    if(ui->DataBase_list->currentItem()!=nullptr){
+        foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
+            if(str.ItemId()==currentItem->data(Qt::UserRole).toInt()){
+                break;
+            }
+            index++;
+        }
+    }
+    dataBase.dataBaseElemetsList()[index].changeStatus();
     delete currentItem;
 }

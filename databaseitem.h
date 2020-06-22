@@ -16,6 +16,7 @@ public:
     QString itemValue();
     int ItemId();
     void changeValue(QString newValue);
+    bool itemStatus();
 };
 
 #endif // DATABASEITEM_H
