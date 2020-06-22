@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->sort_type,&QComboBox::currentTextChanged,this,&MainWindow::render);
     connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
     connect(ui->changeStatusButton,&QPushButton::clicked,this,&MainWindow::render);
+    connect(ui->clearDataBaseButton,&QPushButton::clicked,this,&MainWindow::render);
     ui->DataBase_list->addItem("id\tvalue\tstatus");
 }
 
@@ -105,4 +106,8 @@ void MainWindow::on_changeStatusButton_clicked()
     }
 
     delete currentItem;
+}
+
+void MainWindow::on_clearDataBaseButton_clicked(){
+    dataBase.dataBaseClear();
 }
