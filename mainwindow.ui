@@ -126,7 +126,7 @@
        <property name="title">
         <string>DataBase</string>
        </property>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -143,6 +143,13 @@
           <widget class="QPushButton" name="changeStatusButton">
            <property name="text">
             <string>Поменять статус</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clearDataBaseButton">
+           <property name="text">
+            <string>Очистить базу данных</string>
            </property>
           </widget>
          </item>
