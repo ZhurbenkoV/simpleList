@@ -7,6 +7,7 @@
 #include "sortingtype.h"
 #include <QListWidgetItem>
 #include <QString>
+#include <QListWidget>
 
 
 
@@ -36,5 +37,6 @@ private:
     Ui::MainWindow *ui;
     QList<DataBaseItem> elementsListForRednder;
     DataBase dataBase;
+    int currentItem;
 };
 #endif // MAINWINDOW_H
