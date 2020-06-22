@@ -58,7 +58,6 @@ void MainWindow::on_changeValueButton_clicked(){
     int index=0;
     QListWidgetItem *currentItem = ui->sorted_item_list->currentItem();
     if(ui->sorted_item_list->currentItem()!=nullptr && ui->lineEdit->text()!=nullptr){
-        // dataBase.dataBaseElemetsList()[ui->sorted_item_list->currentItem()->data(Qt::UserRole).toInt()].changeValue(ui->lineEdit->text());
         foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
             if(str.ItemId()==currentItem->data(Qt::UserRole).toInt()){
                 break;
@@ -82,7 +81,7 @@ void MainWindow::on_deleteButton_clicked(){
             }
             currentIndex++;
         }
-        dataBase.dataBaseElemetsList().takeAt(currentIndex);
+        dataBase.deleteItem(currentIndex);
     }
     delete currentItem;
 }
