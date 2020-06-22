@@ -19,6 +19,7 @@ public:
     QList<DataBaseItem> dataBaseElemetsSortedList(SortingType &config);
     void addNewItem(QString value);
     void deleteItem(int id);
+    void dataBaseClear();
     ~DataBase();
 };
 

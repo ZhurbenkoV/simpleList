@@ -55,6 +55,11 @@ void DataBase::deleteItem(int id){
     elemets.removeAt(id);
 }
 
+void DataBase::dataBaseClear(){
+    elemets.clear();
+    this->id=0;
+}
+
 DataBase::~DataBase(){
 
 }
