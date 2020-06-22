@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->changeValueButton,&QPushButton::clicked,this,&MainWindow::render);
     connect(ui->sort_type,&QComboBox::currentTextChanged,this,&MainWindow::render);
     connect(ui->sort_order,&QComboBox::currentTextChanged,this,&MainWindow::render);
+    connect(ui->changeStatusButton,&QPushButton::clicked,this,&MainWindow::render);
 }
 
 void MainWindow::render(){
