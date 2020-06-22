@@ -54,10 +54,19 @@ void MainWindow::on_addButton_clicked(){
 }
 
 void MainWindow::on_changeValueButton_clicked(){
-
+int index=0;
+QListWidgetItem *currentItem = ui->sorted_item_list->currentItem();
     if(ui->sorted_item_list->currentItem()!=nullptr && ui->lineEdit->text()!=nullptr){
-        dataBase.dataBaseElemetsList()[ui->sorted_item_list->currentItem()->data(Qt::UserRole).toInt()].changeValue(ui->lineEdit->text());
+       // dataBase.dataBaseElemetsList()[ui->sorted_item_list->currentItem()->data(Qt::UserRole).toInt()].changeValue(ui->lineEdit->text());
+        foreach(DataBaseItem str,dataBase.dataBaseElemetsList()){
+            if(str.ItemId()==currentItem->data(Qt::UserRole).toInt()){
+                break;
+            }
+            index++;
+        }
     }
+    dataBase.dataBaseElemetsList()[index].changeValue(ui->lineEdit->text());
+    delete currentItem;
     ui->lineEdit->clear();
 
 }
